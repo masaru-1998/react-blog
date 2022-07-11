@@ -3,17 +3,25 @@ import { Routes, Route} from 'react-router-dom';
 
 import{
     Home, 
-    Post,
     Page404,
+    AdominPost,
+    AdominEdit,
     Detail,
  } from 'components/pages';
 const Router: React.FC = () => {
     return (
         <Routes>
-            <Route path="/"        element={<Home/>}/>
-            <Route path="/post"    element={<Post/>}/>
-            <Route path="/detail"  element={<Detail/>}/>
-            <Route path="/page404" element={<Page404/>}/>
+            <Route path="/blog" >
+                <Route path="home"     element={<Home/>}/>
+                <Route path="detail"   element={<Detail/>}/>
+                <Route path="*"  element={<Page404/>}/>
+            </Route>
+            <Route path="/admin">
+                <Route path="posts" element={<AdominPost/>}/>
+                <Route path="edit" element={<AdominEdit/>}/>
+                <Route path="*" element={<Page404/>}/>
+            </Route>
+            <Route path="*" element={<Page404/>}/>
         </Routes>
 
     );
